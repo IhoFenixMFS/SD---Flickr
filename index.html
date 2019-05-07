@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>Sist. Distribuidos - Flickr</title>
+        
+        <script type="text/javascript" src="resources/libs/jquery-2.2.3.min.js"></script>
+        <script type="text/javascript" src="credencialesFlickr.js"></script>
+        <script type="text/javascript" src="js/appFlickr.js"></script>
+        <link rel="stylesheet" type="text/css" href="resources/styles/main.css"></link>
+        <link href='http://fonts.googleapis.com/css?family=ABeeZee' rel='stylesheet' type='text/css'></link>
+        <link href="resources/styles/bootstrap.min.css" rel="stylesheet"></link>
+        <link rel="stylesheet" href="resources/libs/jquery-ui.min.css"></link>
+    
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script src="libs/jquery-ui.min.js"></script>
+    </head>
+    <body>
+	    <!-- Página de Login -->
+		<div class="seccionPagina container-fluid">
+			<header id="headerPage">            		
+			    <hr/>
+			    <h1 class="tituloInicio">Flickr</h1>
+			   	<hr/>
+			</header>
+			<h2 class="tituloSecundario">Iniciar sesión:</h2>
+		   	<form action=""> <!-- Función para loguear y redirigir a inicio -->
+				<div class="formularioLoguin">  
+					<div class="subForm">
+						<div class="bloqueForm">
+							<label for="inputUsuario">Usuario:</label>
+							<input type="text" class="cuadroTxt" id="inputUsuario" maxlength="15" placeholder="Introduzca su nombre de usuario"  required >
+						</div>
+						<div class="bloqueForm">
+							<label for="inputUsuario">Contraseña:</label>
+							<input type="password" id="pass" class="cuadroTxt" name="password" maxlength="15" placeholder="Introduzca su contraseña" required >
+						</div>
+					</div>
+					<input type="submit" class="inputSubmit" value="Iniciar sesión"/>
+				</div>
+			</form>
+		</div>
+		<br/>
+		<footer id="footerPage">
+			<p>Práctica 2 Sistemas Distribuidos</p>
+			<p>
+				Marina Fernández Suárez<br>
+				Clara Baltasar<br>
+				Lois<br>
+				Javier Álvarez<br>
+			</p>
+       </footer>
+    </body>
+</html>
