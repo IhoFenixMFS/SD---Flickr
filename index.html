@@ -19,23 +19,23 @@
 		<div class="seccionPagina container-fluid">
 			<header id="headerPage">            		
 			    <hr/>
-			    <h1 class="tituloInicio">Flickr</h1>
+			    <h1 class="tituloInicio" href="index.html">Flickr</h1>
 			   	<hr/>
 			</header>
 			<h2 class="tituloSecundario">Iniciar sesión:</h2>
-		   	<form action=""> <!-- Función para loguear y redirigir a inicio -->
+		   	<form name=form action="usuario.html"> <!-- Función para loguear y redirigir a usuario -->
 				<div class="formularioLoguin">  
 					<div class="subForm">
 						<div class="bloqueForm">
 							<label for="inputUsuario">Usuario:</label>
-							<input type="text" class="cuadroTxt" id="inputUsuario" maxlength="15" placeholder="Introduzca su nombre de usuario"  required >
+							<input type="text" name="user" class="cuadroTxt" id="inputUsuario" maxlength="15" placeholder="Introduzca su nombre de usuario"  required >
 						</div>
 						<div class="bloqueForm">
 							<label for="inputUsuario">Contraseña:</label>
-							<input type="password" id="pass" class="cuadroTxt" name="password" maxlength="15" placeholder="Introduzca su contraseña" required >
+							<input type="password" name="password" id="pass" class="cuadroTxt" name="password" maxlength="15" placeholder="Introduzca su contraseña" required >
 						</div>
 					</div>
-					<input type="submit" class="inputSubmit" value="Iniciar sesión"/>
+					<input onclick="validar()" type="submit" class="inputSubmit" value="Iniciar sesión"/>
 				</div>
 			</form>
 		</div>
@@ -44,9 +44,9 @@
 			<p>Práctica 2 Sistemas Distribuidos</p>
 			<p>
 				Marina Fernández Suárez<br>
-				Clara Baltasar<br>
-				Lois<br>
-				Javier Álvarez<br>
+				Clara María Baltasar Alonso<br>
+				Daniel Lois Nuevo<br>
+				Javier Álvarez Álvarez<br>
 			</p>
        </footer>
     </body>
