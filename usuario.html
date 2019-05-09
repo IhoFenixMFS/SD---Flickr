@@ -1,0 +1,134 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>Sist. Distribuidos - Flickr</title>
+        
+        <script type="text/javascript" src="resources/libs/jquery-2.2.3.min.js"></script>
+        <script type="text/javascript" src="credencialesFlickr.js"></script>
+        <script type="text/javascript" src="js/appFlickr.js"></script>
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://datoweb.com/visor/js/fresco/fresco.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://datoweb.com/visor/css/fresco/fresco.css" />
+        <link rel="stylesheet" type="text/css" href="resources/styles/main.css"></link>
+        <link href='http://fonts.googleapis.com/css?family=ABeeZee' rel='stylesheet' type='text/css'></link>
+        <link href="resources/styles/bootstrap.min.css" rel="stylesheet"></link>
+        <link rel="stylesheet" href="resources/libs/jquery-ui.min.css"></link>
+    
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script src="libs/jquery-ui.min.js"></script>
+    </head>
+    <body>
+    
+    <script>
+    	$(document).ready(function(){
+			//Al hacer clic en cualquier img ejecutamos la acción
+			$('.row img').click(function() {
+			//Capturamos el src de la img
+			var postimg= $(this).attr('src');
+			//Agregamos el src a una href simbólico
+			$('#verimagenes').attr('href',postimg);
+			//Hacemos clic en el enlace para activar el visor
+			$('#verimagenes').click();
+			});
+		});
+	</script>
+    
+	    <!-- Página de Login -->
+	    <div class="seccionPagina container-fluid">
+			<header id="headerPage">            		
+			    <hr/>
+			    <h1 class="tituloInicio" href="index.html">Flickr</h1>
+			   	<hr/>
+			</header>
+		</div>
+		<nav id="headerPage" class="seccionPagina container-fluid">
+
+                    <ul class="nav navbar-nav navbar-right white-lette">
+                        <li><div class="btn-group">
+                        <li> <a id="signOut" type="submit" href="perfilUsuario.html" class="btn btn-warning">Clara Baltasar (@clarabaltasar)</a></li> 
+					    <br>
+					    <li> <a id="signOut" type="submit" href="index.html" class="btn btn-danger">Sign Out</a></li>
+                    </ul>
+                   </div>
+                </div>
+			
+    	</nav><br>
+    	
+    	<section class="container-fluid">
+        <!-- fotos de perfiles seguidos -->
+    	<div class="row">
+		<div class="panel panel-default col-sm-12 col-md-3 back-color">
+                <div class="panel-heading">
+                    <div class="row">
+                        <img class="col-sm-3 perfil-size" src="../SD02Flickr/images/iconoMarina.jpg" alt="">
+                        <div class="col-sm-8">
+                            <h3 class="text-left">Marina Fernández (@marinafs)</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                    </div>
+                    <img class="img-responsive photo-size" src="../SD02Flickr/images/newyork.jpg" alt="" width="400">
+                    <div class="row">
+                        <p class="col-md-12" >Nueva York</p>
+                    </div>
+                </div>
+        </div>
+        <a id="verimagenes" class='fresco' data-fresco-group='grupo'></a>
+		
+		<div class="panel panel-default col-sm-12 col-md-3 back-color">
+        		<div class="panel-heading">
+					<div class="row">
+                        <img class="col-sm-3 perfil-size" src="../SD02Flickr/images/theRock.jpg" alt="">
+                        <div class="col-sm-8">
+                            <h3 class="text-left">Daniel Lois (@daniellois)</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                    </div>
+                    <img class="img-responsive photo-size" src="../SD02Flickr/images/escalada.jpg" alt="" width="400">
+                    <div class="row">
+                        <p class="col-md-12" >Escalada en Barcelona</p>
+                    </div>
+                </div>
+         </div>
+         <a id="verimagenes" class='fresco' data-fresco-group='grupo'></a>
+		
+		<div class="panel panel-default col-sm-12 col-md-3 back-color">
+        		<div class="panel-heading">
+					<div class="row">
+                        <img class="col-sm-3 perfil-size" src="../SD02Flickr/images/zacefron.jpg" alt="">
+                        <div class="col-sm-8">
+                            <h3 class="text-left">Javier Álvarez (@javieralvarez)</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                    </div>
+                    <img class="img-responsive photo-size" src="../SD02Flickr/images/texas.jpg" alt="" width="400">
+                    <div class="row">
+                        <p class="col-md-12" >Texas Tavern Guadarrama</p>
+                    </div>
+                </div>
+         </div>
+         <a id="verimagenes" class='fresco' data-fresco-group='grupo'></a>
+		
+		</div>
+		</section>		
+		<br/>
+		<footer id="footerPage">
+			<p>Práctica 2 Sistemas Distribuidos</p>
+			<p>
+				Marina Fernández Suárez<br>
+				Clara María Baltasar Alonso<br>
+				Daniel Lois Nuevo<br>
+				Javier Álvarez Álvarez<br>
+			</p>
+       </footer>
+    </body>
+</html>
