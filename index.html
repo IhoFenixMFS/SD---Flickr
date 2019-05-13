@@ -6,10 +6,13 @@
         <script type="text/javascript" src="resources/libs/jquery-2.2.3.min.js"></script>
         <script type="text/javascript" src="credencialesFlickr.js"></script>
         <script type="text/javascript" src="js/appFlickr.js"></script>
+        <script type="text/javascript" src="resources/libs/smoothbox.jquery2.min.js"></script>
+        <script type="text/javascript" src="resources/libs/smoothbox.js"></script>
         <link rel="stylesheet" type="text/css" href="resources/styles/main.css"></link>
         <link href='http://fonts.googleapis.com/css?family=ABeeZee' rel='stylesheet' type='text/css'></link>
         <link href="resources/styles/bootstrap.min.css" rel="stylesheet"></link>
         <link rel="stylesheet" href="resources/libs/jquery-ui.min.css"></link>
+        <link rel="stylesheet" href="resources/libs/smoothbox.css"></link>
     
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <script src="libs/jquery-ui.min.js"></script>
@@ -23,15 +26,13 @@
 			   	<hr/>
 			</header>
 		</div>
-		<button class="boton" onclick="filtrar_fotos()">Familiares y amigos</button> 
-		<button class="boton" onclick="mostrar_todo()"> Moatrar todo</button> 
+		<button id="btnamigos" class="boton">Familiares y amigos</button> 
+		<button id="btntodo" class="boton"> Moatrar todo</button> 
 		
 		<br/>
-		
-		<section>
-            <h1 class="tituloSecundario"> Nombre de usuario</h1>
-        	<div id="imagenes"></div>
-        </section>
+	
+        <div id="imagenes"></div>
+
         
 		<footer id="footerPage">
 		

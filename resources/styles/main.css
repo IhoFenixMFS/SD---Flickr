@@ -10,6 +10,7 @@ button {
 .boton {
 	color: #ffffff;
 }
+
 .seccionPagina {
 	font-family: Georgia, "Times New Roman", Times, serif;
     width: 90%;
@@ -85,21 +86,3 @@ button {
     background: #1adbaf;
     text-align: center;
 }
-
-#userNameHeader{
-    padding-bottom: 45px;
-}
-
-#contents {
-    padding-bottom: 45px;
-}
-
-#return {
-    padding-bottom: 45px;
-}
-
-#images {
-    padding-bottom: 45px;
-}
-
-a { cursor: pointer; }
