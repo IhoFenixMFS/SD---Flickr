@@ -15,36 +15,26 @@
         <script src="libs/jquery-ui.min.js"></script>
     </head>
     <body>
-	    <!-- Página de Login -->
+	    <!-- Página Inicial -->
 		<div class="seccionPagina container-fluid">
 			<header id="headerPage">            		
 			    <hr/>
-			    <h1 class="tituloInicio" href="index.html">Flickr</h1>
+			    <h1 class="tituloInicio">Flickr</h1>
 			   	<hr/>
 			</header>
-			<h2 class="tituloSecundario">Iniciar sesión:</h2>
-		   	<form name=form action="usuario.html"> <!-- Función para loguear y redirigir a usuario -->
-				<div class="formularioLoguin">  
-					<div class="subForm">
-						<div class="bloqueForm">
-							<label for="inputUsuario">Usuario:</label>
-							<input type="text" name="user" class="cuadroTxt" id="inputUsuario" maxlength="15" placeholder="Introduzca su nombre de usuario"  required >
-						</div>
-						<div class="bloqueForm">
-							<label for="inputUsuario">Contraseña:</label>
-							<input type="password" name="password" id="pass" class="cuadroTxt" name="password" maxlength="15" placeholder="Introduzca su contraseña" required >
-						</div>
-					</div>
-					<input type="submit" class="inputSubmit" value="Iniciar sesión"/>
-				</div>
-			</form>
 		</div>
+		<button class="boton" onclick="filtrar_fotos()">Familiares y amigos</button> 
+		<button class="boton" onclick="mostrar_todo()"> Moatrar todo</button> 
+		
 		<br/>
+		
 		<section>
-            <h1 class="formularioLoguin"> Flickr getPublicPhotos</h1>
-            <div id="imagenes"></div>
+            <h1 class="tituloSecundario"> Nombre de usuario</h1>
+        	<div id="imagenes"></div>
         </section>
+        
 		<footer id="footerPage">
+		
 			<p>Práctica 2 Sistemas Distribuidos</p>
 			<p>
 				Marina Fernández Suárez<br>
@@ -52,6 +42,9 @@
 				Daniel Lois Nuevo<br>
 				Javier Álvarez Álvarez<br>
 			</p>
+			
        </footer>
+       
     </body>
+    
 </html>

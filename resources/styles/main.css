@@ -2,6 +2,14 @@ body{
 	background: #6528d5 !important;
 }
 
+button {
+  background-color: #1adbaf;
+  border: hidden;
+  
+}
+.boton {
+	color: #ffffff;
+}
 .seccionPagina {
 	font-family: Georgia, "Times New Roman", Times, serif;
     width: 90%;
@@ -31,7 +39,7 @@ body{
 	text-shadow: 2px 2px 0.5px rgba(255,255,255,1);
 }
 
-.formularioLoguin {
+.formulario {
 	font-family: Georgia, "Times New Roman", Times, serif;
     text-align: center; 
     font-weight: bold;
