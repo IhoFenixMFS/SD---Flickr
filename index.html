@@ -32,7 +32,24 @@
 		<br/>
 	
         <div id="imagenes"></div>
-
+		
+		<!-- Para los popup se crea un div modal que va a gestionar las imagenes al hacer click -->
+		<div class="modal fade fullscreen-modal" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+		    	<div class="modal-content">
+		      		<div class="modal-header">
+		        		<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		        		<h4 class="modal-title" id="myModalLabel"></h4>
+		      		</div>
+		      		<div class="modal-body">
+		       			<img src="" id="imagepreview" style="width: 500px; height: 300px;" >
+		      		</div>
+		      		<div class="modal-footer">
+		        		<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+		      		</div>
+			    </div>
+			</div>
+		</div>
         
 		<footer id="footerPage">
 		

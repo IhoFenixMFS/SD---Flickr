@@ -23,6 +23,11 @@ $(document).ready(function() {
 		$('#mostrando-by').text("todos");
 	});
 	
+	$(document).on('click', '#popup-image', function() {
+		   $('#imagepreview').attr('src', $('#image-src').attr('src'));
+		   $('#imagemodal').modal('show');
+		});
+	
 
 })
 
@@ -89,7 +94,6 @@ function obtenerInfoUser (photo, posicionImagen) {
 }
 
 function obtenerInfoFotos(idFoto, person, posicionImagen) {
-	
 	var url = "https://api.flickr.com/services/rest/?method=flickr.photos.getInfo";
 	var data = {
 		api_key: constantes.api_key,
@@ -97,7 +101,6 @@ function obtenerInfoFotos(idFoto, person, posicionImagen) {
 		format: "json",
 		nojsoncallback: 1
 	};
-	//$("#imagenes").empty();
 	var imagenesHTML = "";
 	//Se inicializa como String vacío para, posteriormente poder concatenar en cada iteración el texto HTML que el navegador interpretará y "dibujará" con las imágenes. 
 	
@@ -108,8 +111,10 @@ function obtenerInfoFotos(idFoto, person, posicionImagen) {
 		responseType:'application/json',
 		dataType : "json",
 		success : function(data) {
-
 			
+			//en la variable "foto" almacenamos los datos del objeto "photo" para después poder usar los atributos del mismo que necesitemos
+			var photo = data.photo;
+			var fSubida = formatDate(new Date(parseInt(photo.dateuploaded)*1000));
 			//Incluimos el HTML para mostrar las imágenes
 			//se ha tabulado para facilitar su lectura, ya que es muy lioso hacerlo en una sola línea.
 			imagenesHTML = imagenesHTML +
@@ -118,7 +123,7 @@ function obtenerInfoFotos(idFoto, person, posicionImagen) {
 					"<div class='row no-gutters'>" +
 					
 						"<div class='col-md-4'>" +
-							"<a id='imagen" + posicionImagen + "' href='#'>" +
+						"<a id='imagen-popup" + posicionImagen + "' href='#'>" +
 								"<img id='image-src-" + posicionImagen + "' src='http://farm" + photo.farm + ".staticflickr.com/" + photo.server + "/" + photo.id + "_" + photo.secret + ".jpg' alt=''>" +
 							"</a>" +
 						"</div><p></p>" + 
@@ -126,14 +131,11 @@ function obtenerInfoFotos(idFoto, person, posicionImagen) {
 						"<div class='col-md-12'>" +
 							"<div class='card-body'>" + 
 								"<p class='card-text'>" +
-									"<nombre class='nombre'> Subida por: " + person.realname._content + "</nombre><br>" +
+									"<nombre class='nombre'> Subida por: " + person.realname._content+ "(" + photo.owner.username + ")</nombre><br>" +
 									"<span class='badge badge-light'>" + fSubida + "</span>" +
 								"</p>" +
 								"<h5 class='card-text'>" + photo.title._content + "</h5>" +  
 								"<h5 class='card-text' >" + photo.description._content + "</h5>" + 
-								"<a href='timeline.html?id_usuario=" + person.id + "' class='badge badge-primary'>Ir a: @" + photo.owner.username + "</a>" +
-								/*obtenerMiniaturaFotos(idFoto, person, posicionImagen);*/
-							"</div>" +
 						"</div>" +
 						
 					"</div>" +
@@ -142,67 +144,13 @@ function obtenerInfoFotos(idFoto, person, posicionImagen) {
 			
 			$('#imagenes').append(imagenesHTML);
 			
-		
-			
-			
-		}
-	});
-}
-
-function obtenerMiniaturaFotos(idFoto, person, posicionImagen) {
-	var url = "https://api.flickr.com/services/rest/?method=flickr.photos.getInfo";
-	var data = {
-		api_key: constantes.api_key,
-		photo_id: idFoto,
-		format: "json",
-		nojsoncallback: 1
-	};
-	//$("#imagenes").empty();
-	var imagenesHTML = "";
-	//Se inicializa como String vacío para, posteriormente poder concatenar en cada iteración el texto HTML que el navegador interpretará y "dibujará" con las imágenes. 
-	
-	$.ajax({
-		url : url,
-		type: "GET",
-		data: data,
-		responseType:'application/json',
-		dataType : "json",
-		success : function(data) {
-	//Hacemos popeable cada imgen -> generamos la miniatura y su pop-up para mostrarla en un emergente
-			
-		
-			var photo = data.photo;
-			var fSubida = formatDate(new Date(parseInt(photo.dateuploaded)*1000));
-			
-			var urlSmall = 'https://farm' + photo.farm + ".staticflickr.com/" + photo.server + '/' + photo.id + '_' + photo.secret + '_m.jpg';
-			
-			// Miniatura
-			$("#imagenes").append($("<a></a>").attr("id", "imageLink_" + posicionImagen));
-			$("#imageLink_" + posicionImagen).attr("data-toggle", "modal");
-			$("#imageLink_" + posicionImagen).attr("data-target", "#popup_" + posicionImagen);
-
-			$("#imageLink_" + posicionImagen).append($("<img/>").attr("id", "image_" + posicionImagen));
-			$("#image_" + posicionImagen).attr("src", urlSmall);
-			$("#image_" + posicionImagen).attr("class", "img-thumbnail image");
-
-			// Popup
-			$("#imagenes").append($("<div></div>").attr("id", "popup_" + posicionImagen));
-			$("#popup_" + i).attr("class", "modal fade");
-			$("#popup_" + i).attr("class", "modal fade");
-			$("#popup_" + i).attr("tabindex", "-1");
-			$("#popup_" + i).attr("role", "dialog");
-			$("#popup_" + i).attr("aria-labelledby", "myModalLabel");
-			$("#popup_" + i).attr("aria-hidden", "true");
-			$("#popup_" + i).append(
-					$("<div class='modal-dialog'></div>").append(
-							$("<div class='modal-content'></div>").append(
-									$("<div class='modal-body'></div>").append(
-											$("<img class='img-responsive'/>")
-													.attr("src", urlSmall)))));
-			
-			
-		
-			
+			//Gestión de maximizado de imagenes
+			var idImagen = '#image-src-' + posicionImagen;
+			var idPopup = '#imagen-popup' + posicionImagen;
+			$(document).on('click', idPopup, function() {
+			   $('#imagepreview').attr('src', $(idImagen).attr('src'));
+			   $('#imagemodal').modal('show');
+			});
 			
 		}
 	});
