@@ -89,6 +89,7 @@ function obtenerInfoUser (photo, posicionImagen) {
 }
 
 function obtenerInfoFotos(idFoto, person, posicionImagen) {
+	
 	var url = "https://api.flickr.com/services/rest/?method=flickr.photos.getInfo";
 	var data = {
 		api_key: constantes.api_key,
@@ -107,50 +108,85 @@ function obtenerInfoFotos(idFoto, person, posicionImagen) {
 		responseType:'application/json',
 		dataType : "json",
 		success : function(data) {
+
 			
-			//en la variable "foto" almacenamos los datos del objeto "photo" para después poder usar los atributos del mismo que necesitemos
-			var photo = data.photo;
-			var fSubida = formatDate(new Date(parseInt(photo.dateuploaded)*1000));
 			//Incluimos el HTML para mostrar las imágenes
 			//se ha tabulado para facilitar su lectura, ya que es muy lioso hacerlo en una sola línea.
 			imagenesHTML = imagenesHTML +
 			"<div class='col-6'>" +
 				"<div class='card card-timeline'>" +
-					"<div class='row no-gutters'>" + 
+					"<div class='row no-gutters'>" +
+					
 						"<div class='col-md-4'>" +
 							"<a id='imagen" + posicionImagen + "' href='#'>" +
 								"<img id='image-src-" + posicionImagen + "' src='http://farm" + photo.farm + ".staticflickr.com/" + photo.server + "/" + photo.id + "_" + photo.secret + ".jpg' alt=''>" +
 							"</a>" +
-						"</div>" + 
-						"<div class='col-md-8'><div class='card-body'>" + 
-							"<h5 class='card-title'>" + photo.title._content + "</h5>" +  
-							"<p class='card-text'>" + photo.description._content + "</p>" + 
-							"<p class='card-text'>" +
-								"<small class='text-muted'>" + person.realname._content + " (" + photo.owner.username + ")</small><br>" +
-								"<span class='badge badge-light'>" + fSubida + "</span>" +
-							"</p>" +
-							"<a href='timeline.html?id_usuario=" + person.id + "' class='badge badge-primary'>Ver perfil</a>" +
+						"</div><p></p>" + 
+						
+						"<div class='col-md-12'>" +
+							"<div class='card-body'>" + 
+								"<p class='card-text'>" +
+									"<nombre class='nombre'> Subida por: " + person.realname._content + "</nombre><br>" +
+									"<span class='badge badge-light'>" + fSubida + "</span>" +
+								"</p>" +
+								"<h5 class='card-text'>" + photo.title._content + "</h5>" +  
+								"<h5 class='card-text' >" + photo.description._content + "</h5>" + 
+								"<a href='timeline.html?id_usuario=" + person.id + "' class='badge badge-primary'>Ir a: @" + photo.owner.username + "</a>" +
+								/*obtenerMiniaturaFotos(idFoto, person, posicionImagen);*/
+							"</div>" +
 						"</div>" +
+						
 					"</div>" +
 				"</div>" +
-			"</div>";
+			"</div><hr /></br></br>";
 			
-			//$("#imagenes").empty();//¿?¿?¿?¿?¿?¿?¿? -------------------------------------------------
 			$('#imagenes').append(imagenesHTML);
 			
-			//Hacemos popeable cada imgen -> generamos la miniatura y su pop-up para mostrarla en un emergente
-	/*
-			// Miniatura
-			$("#imagenes").append($("<a></a>").attr("id", "imageLink_" + i));
-			$("#imageLink_" + i).attr("data-toggle", "modal");
-			$("#imageLink_" + i).attr("data-target", "#popup_" + i);
+		
+			
+			
+		}
+	});
+}
 
-			$("#imageLink_" + i).append($("<img/>").attr("id", "image_" + i));
-			$("#image_" + i).attr("src", urlSmall);
-			$("#image_" + i).attr("class", "img-thumbnail image");
+function obtenerMiniaturaFotos(idFoto, person, posicionImagen) {
+	var url = "https://api.flickr.com/services/rest/?method=flickr.photos.getInfo";
+	var data = {
+		api_key: constantes.api_key,
+		photo_id: idFoto,
+		format: "json",
+		nojsoncallback: 1
+	};
+	//$("#imagenes").empty();
+	var imagenesHTML = "";
+	//Se inicializa como String vacío para, posteriormente poder concatenar en cada iteración el texto HTML que el navegador interpretará y "dibujará" con las imágenes. 
+	
+	$.ajax({
+		url : url,
+		type: "GET",
+		data: data,
+		responseType:'application/json',
+		dataType : "json",
+		success : function(data) {
+	//Hacemos popeable cada imgen -> generamos la miniatura y su pop-up para mostrarla en un emergente
+			
+		
+			var photo = data.photo;
+			var fSubida = formatDate(new Date(parseInt(photo.dateuploaded)*1000));
+			
+			var urlSmall = 'https://farm' + photo.farm + ".staticflickr.com/" + photo.server + '/' + photo.id + '_' + photo.secret + '_m.jpg';
+			
+			// Miniatura
+			$("#imagenes").append($("<a></a>").attr("id", "imageLink_" + posicionImagen));
+			$("#imageLink_" + posicionImagen).attr("data-toggle", "modal");
+			$("#imageLink_" + posicionImagen).attr("data-target", "#popup_" + posicionImagen);
+
+			$("#imageLink_" + posicionImagen).append($("<img/>").attr("id", "image_" + posicionImagen));
+			$("#image_" + posicionImagen).attr("src", urlSmall);
+			$("#image_" + posicionImagen).attr("class", "img-thumbnail image");
 
 			// Popup
-			$("#imagenes").append($("<div></div>").attr("id", "popup_" + i));
+			$("#imagenes").append($("<div></div>").attr("id", "popup_" + posicionImagen));
 			$("#popup_" + i).attr("class", "modal fade");
 			$("#popup_" + i).attr("class", "modal fade");
 			$("#popup_" + i).attr("tabindex", "-1");
@@ -162,8 +198,11 @@ function obtenerInfoFotos(idFoto, person, posicionImagen) {
 							$("<div class='modal-content'></div>").append(
 									$("<div class='modal-body'></div>").append(
 											$("<img class='img-responsive'/>")
-													.attr("src", url)))));
-	*/
+													.attr("src", urlSmall)))));
+			
+			
+		
+			
 			
 		}
 	});

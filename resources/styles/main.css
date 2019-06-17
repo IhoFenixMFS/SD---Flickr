@@ -1,16 +1,38 @@
 body{
 	background: #6528d5 !important;
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+h5{
+	color: #ffffff;
+	font-weight: bold;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	line-height: 1em;
+	font-size: 16px;
+    
 }
 
 button {
   background-color: #1adbaf;
   border: hidden;
+  font-family: Georgia, "Times New Roman", Times, serif;
   
 }
+
 .boton {
 	color: #ffffff;
+	font-family: Georgia, "Times New Roman", Times, serif;
 }
 
+.card-text {
+	color: #1adbaf;
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+nombre {
+	color: #1adbaf;
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
 .seccionPagina {
 	font-family: Georgia, "Times New Roman", Times, serif;
     width: 90%;
